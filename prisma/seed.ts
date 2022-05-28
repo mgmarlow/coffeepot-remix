@@ -10,7 +10,7 @@ async function seed() {
     // ignore if user doesn't exist
   })
 
-  const hashedPassword = await bcrypt.hash('supersecretpassword', 10)
+  const hashedPassword = await bcrypt.hash('coffeepotdev', 10)
 
   const user = await prisma.user.create({
     data: {

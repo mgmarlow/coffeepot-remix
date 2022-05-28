@@ -31,6 +31,7 @@ export default function Index() {
       </header>
 
       <h1>Coffeepot</h1>
+      <p>Log, rate, and discover your favorite coffees.</p>
     </div>
   )
 }
