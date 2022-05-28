@@ -15,19 +15,22 @@ export default function Index() {
 
   return (
     <div>
-      <nav>
-        {loaderData.userId ? (
-          <Form action="/logout" method="post">
-            <button type="submit">Logout</button>
-          </Form>
-        ) : (
-          <>
-            <Link to="/login">Log in</Link>
-            <Link to="/signup">Sign up</Link>
-          </>
-        )}
-      </nav>
-      <h1 className="text-3xl font-bold underline">Coffeepot</h1>
+      <header>
+        <nav>
+          {loaderData.userId ? (
+            <Form action="/logout" method="post">
+              <button type="submit">Logout</button>
+            </Form>
+          ) : (
+            <>
+              <Link to="/login">Log in</Link>
+              <Link to="/signup">Sign up</Link>
+            </>
+          )}
+        </nav>
+      </header>
+
+      <h1>Coffeepot</h1>
     </div>
   )
 }

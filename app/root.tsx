@@ -7,13 +7,19 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
-import styles from './styles/app.css'
+// Use tailwind soonTM
+/* import styles from './styles/app.css' */
 
 export const links = () => {
   return [
+
+    /* {
+     *   rel: 'stylesheet',
+     *   href: styles,
+     * }, */
     {
       rel: 'stylesheet',
-      href: styles,
+      href: 'https://cdn.simplecss.org/simple.min.css',
     },
   ]
 }

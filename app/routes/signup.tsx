@@ -46,12 +46,10 @@ const Signup = () => {
 
       <Form method="post">
         <div>
-          <label className="block" htmlFor="email">
-            Email address
-          </label>
+          <label htmlFor="email">Email address</label>
+          <br />
           <input
             id="email"
-            className="border border-gray-300 placeholder-gray-500 text-gray-900 rounded"
             required
             name="email"
             type="email"
@@ -66,12 +64,10 @@ const Signup = () => {
         </div>
 
         <div>
-          <label className="block" htmlFor="password">
-            Password
-          </label>
+          <label htmlFor="password">Password</label>
+          <br />
           <input
             id="password"
-            className="border border-gray-300 placeholder-gray-500 text-gray-900 rounded"
             required
             name="password"
             type="password"
@@ -85,16 +81,11 @@ const Signup = () => {
           )}
         </div>
 
-        <button className="border px-3 py-1 rounded" type="submit">
-          Sign up
-        </button>
+        <button type="submit">Sign up</button>
       </Form>
 
       <p>
-        Already have an account?{' '}
-        <Link className="text-blue-700" to="/login">
-          Log in
-        </Link>
+        Already have an account? <Link to="/login">Log in</Link>
       </p>
     </div>
   )

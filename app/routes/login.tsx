@@ -54,17 +54,17 @@ const Login = () => {
   const actionData = useActionData()
 
   return (
-    <div className="flex min-h-full flex-col justify-center">
-      <h1>Log in to <Link to="/">Coffeepot</Link></h1>
+    <div>
+      <h1>
+        Log in to <Link to="/">Coffeepot</Link>
+      </h1>
 
       <Form method="post">
         <div>
-          <label className="block" htmlFor="email">
-            Email address
-          </label>
+          <label htmlFor="email">Email address</label>
+          <br />
           <input
             id="email"
-            className="border border-gray-300 text-gray-900 rounded"
             required
             name="email"
             type="email"
@@ -79,12 +79,10 @@ const Login = () => {
         </div>
 
         <div>
-          <label className="block" htmlFor="password">
-            Password
-          </label>
+          <label htmlFor="password">Password</label>
+          <br />
           <input
             id="password"
-            className="border rounded border-gray-300 text-gray-900"
             required
             name="password"
             type="password"
@@ -98,7 +96,7 @@ const Login = () => {
           )}
         </div>
 
-        <button className="border py-1 px-3 rounded" type="submit">Log in</button>
+        <button type="submit">Log in</button>
       </Form>
     </div>
   )
