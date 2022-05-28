@@ -1,5 +1,6 @@
 import { createCookieSessionStorage, redirect, Session } from '@remix-run/node'
 import invariant from 'tiny-invariant'
+import { getUserById } from './user.server'
 
 invariant(process.env.SESSION_SECRET, 'SESSION_SECRET must be set in env')
 
@@ -46,4 +47,18 @@ export const logout = async (request: Request) => {
       'Set-Cookie': await sessionStorage.destroySession(session),
     },
   })
+}
+
+export const getUser = async (request: Request) => {
+  const userId = await getUserId(request)
+  if (!userId) {
+    return
+  }
+
+  const user = await getUserById(userId)
+  if (user) {
+    return user
+  }
+
+  throw await logout(request)
 }

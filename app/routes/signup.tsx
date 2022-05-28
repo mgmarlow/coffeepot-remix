@@ -1,8 +1,14 @@
-import { ActionFunction, json } from '@remix-run/node'
+import { ActionFunction, json, LoaderFunction, redirect } from '@remix-run/node'
 import { Form, Link, useActionData } from '@remix-run/react'
-import { createUserSession } from '~/session.server'
+import { createUserSession, getUserId } from '~/session.server'
 import { createUser, getUserByEmail } from '~/user.server'
 import { validateEmail, validatePassword } from '~/utils'
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const userId = await getUserId(request)
+  if (userId) return redirect('/')
+  return json({})
+}
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData()
@@ -42,7 +48,9 @@ const Signup = () => {
 
   return (
     <div>
-      <h1>Sign up for Coffeepot</h1>
+      <h1>
+        Sign up for <Link to="/">Coffeepot</Link>
+      </h1>
 
       <Form method="post">
         <div>
