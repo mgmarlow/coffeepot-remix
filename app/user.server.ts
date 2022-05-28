@@ -1,6 +1,8 @@
 import bcrypt from 'bcryptjs'
 import { User, Password } from '@prisma/client'
 import { prisma } from '~/db.server'
+import { getUserId } from './session.server'
+import { redirect } from '@remix-run/node'
 
 export const verifyUser = async (
   email: User['email'],
@@ -46,4 +48,13 @@ export const createUser = async (
       },
     },
   })
+}
+
+// TODO: This should probably go somewhere else
+export const requireUserAuth = async (request: Request) => {
+  const userId = await getUserId(request)
+  if (!userId) {
+    throw redirect('/login')
+  }
+  return userId
 }

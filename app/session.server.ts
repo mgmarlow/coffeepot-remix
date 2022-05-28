@@ -38,3 +38,12 @@ export const createUserSession = async (request: Request, userId: string) => {
     },
   })
 }
+
+export const logout = async (request: Request) => {
+  const session = await getSession(request)
+  return redirect('/', {
+    headers: {
+      'Set-Cookie': await sessionStorage.destroySession(session),
+    },
+  })
+}

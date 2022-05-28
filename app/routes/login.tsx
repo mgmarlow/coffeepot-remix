@@ -1,5 +1,6 @@
 import { ActionFunction, json, LoaderFunction, redirect } from '@remix-run/node'
 import { Form, useActionData } from '@remix-run/react'
+import { Link } from 'react-router-dom'
 import { createUserSession, getUserId } from '~/session.server'
 import { verifyUser } from '~/user.server'
 import { validateEmail } from '~/utils'
@@ -54,11 +55,16 @@ const Login = () => {
 
   return (
     <div className="flex min-h-full flex-col justify-center">
+      <h1>Log in to <Link to="/">Coffeepot</Link></h1>
+
       <Form method="post">
         <div>
-          <label htmlFor="email">Email address</label>
+          <label className="block" htmlFor="email">
+            Email address
+          </label>
           <input
             id="email"
+            className="border border-gray-300 text-gray-900 rounded"
             required
             name="email"
             type="email"
@@ -73,9 +79,12 @@ const Login = () => {
         </div>
 
         <div>
-          <label htmlFor="password">Password</label>
+          <label className="block" htmlFor="password">
+            Password
+          </label>
           <input
             id="password"
+            className="border rounded border-gray-300 text-gray-900"
             required
             name="password"
             type="password"
@@ -89,7 +98,7 @@ const Login = () => {
           )}
         </div>
 
-        <button type="submit">Log in</button>
+        <button className="border py-1 px-3 rounded" type="submit">Log in</button>
       </Form>
     </div>
   )

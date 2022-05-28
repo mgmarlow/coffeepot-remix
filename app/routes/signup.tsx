@@ -42,11 +42,16 @@ const Signup = () => {
 
   return (
     <div>
+      <h1>Sign up for Coffeepot</h1>
+
       <Form method="post">
         <div>
-          <label htmlFor="email">Email address</label>
+          <label className="block" htmlFor="email">
+            Email address
+          </label>
           <input
             id="email"
+            className="border border-gray-300 placeholder-gray-500 text-gray-900 rounded"
             required
             name="email"
             type="email"
@@ -61,9 +66,12 @@ const Signup = () => {
         </div>
 
         <div>
-          <label htmlFor="password">Password</label>
+          <label className="block" htmlFor="password">
+            Password
+          </label>
           <input
             id="password"
+            className="border border-gray-300 placeholder-gray-500 text-gray-900 rounded"
             required
             name="password"
             type="password"
@@ -77,11 +85,16 @@ const Signup = () => {
           )}
         </div>
 
-        <button type="submit">Sign up</button>
+        <button className="border px-3 py-1 rounded" type="submit">
+          Sign up
+        </button>
       </Form>
 
       <p>
-        Already have an account? <Link to="/login">Log in</Link>
+        Already have an account?{' '}
+        <Link className="text-blue-700" to="/login">
+          Log in
+        </Link>
       </p>
     </div>
   )
