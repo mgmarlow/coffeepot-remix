@@ -23,9 +23,9 @@ const FormInput = ({
         type={type}
         aria-describedby={`${name}-error`}
       />
-      {errors?.name && (
-        <div style={{ color: 'red' }} id="name-error">
-          {errors.name}
+      {errors && errors[name] && (
+        <div style={{ color: 'red' }} id={`${name}-error`}>
+          {errors[name]}
         </div>
       )}
     </div>

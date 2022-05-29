@@ -29,6 +29,7 @@ const CoffeeDetail = () => {
       <Link to="/coffees">← coffees</Link>
       <h1>{loaderData.coffee.name}</h1>
       <p>by {loaderData.coffee.roaster}</p>
+      {loaderData.coffee.notes && <p>{loaderData.coffee.notes}</p>}
     </main>
   )
 }
