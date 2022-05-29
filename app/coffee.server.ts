@@ -19,3 +19,21 @@ export const getCoffee = ({
     where: { userId, id },
   })
 }
+
+export const createCoffee = ({
+  name,
+  roaster,
+  userId,
+}: {
+  name: Coffee['name']
+  roaster: Coffee['roaster']
+  userId: User['id']
+}) => {
+  return prisma.coffee.create({
+    data: {
+      name,
+      roaster,
+      userId,
+    },
+  })
+}

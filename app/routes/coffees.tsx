@@ -1,7 +1,6 @@
 import { json, LoaderFunction } from '@remix-run/node'
 import { Link, Outlet, useLoaderData } from '@remix-run/react'
 import { getCoffees } from '~/coffee.server'
-import Header from '~/components/Header'
 import { requireUserAuth } from '~/user.server'
 
 interface LoaderData {
@@ -32,6 +31,8 @@ const Coffees = () => {
             )
           })}
         </ul>
+
+        <Link to="new">Add coffee</Link>
 
         <Outlet />
       </main>

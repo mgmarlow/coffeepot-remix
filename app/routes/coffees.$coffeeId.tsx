@@ -1,9 +1,9 @@
 import { Coffee } from '@prisma/client'
 import { json, LoaderFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
+import { Link } from 'react-router-dom'
 import invariant from 'tiny-invariant'
 import { getCoffee } from '~/coffee.server'
-import Header from '~/components/Header'
 import { requireUserAuth } from '~/user.server'
 
 interface LoaderData {
@@ -26,6 +26,7 @@ const CoffeeDetail = () => {
 
   return (
     <main>
+      <Link to="/coffees">← coffees</Link>
       <h1>{loaderData.coffee.name}</h1>
       <p>by {loaderData.coffee.roaster}</p>
     </main>
