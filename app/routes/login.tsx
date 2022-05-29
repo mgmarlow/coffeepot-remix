@@ -1,6 +1,7 @@
 import { ActionFunction, json, LoaderFunction, redirect } from '@remix-run/node'
 import { Form, useActionData } from '@remix-run/react'
 import { Link } from 'react-router-dom'
+import Input from '~/components/Input'
 import { createUserSession, getUserId } from '~/session.server'
 import { verifyUser } from '~/user.server'
 import { validateEmail } from '~/utils'
@@ -60,42 +61,22 @@ const Login = () => {
       </h1>
 
       <Form method="post">
-        <div>
-          <label htmlFor="email">Email address</label>
-          <br />
-          <input
-            id="email"
-            required
-            name="email"
-            type="email"
-            autoComplete="email"
-            aria-describedby="email-error"
-          />
-          {actionData?.errors?.email && (
-            <div className="pt-1 text-red-700" id="email-error">
-              {actionData.errors.email}
-            </div>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="password">Password</label>
-          <br />
-          <input
-            id="password"
-            required
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            aria-describedby="password-error"
-          />
-          {actionData?.errors?.password && (
-            <div className="pt-1 text-red-700" id="password-error">
-              {actionData.errors.password}
-            </div>
-          )}
-        </div>
-
+        <Input
+          name="email"
+          type="email"
+          label="Email address"
+          errors={actionData?.errors}
+          required={true}
+          autoComplete="email"
+        />
+        <Input
+          name="password"
+          label="Password"
+          errors={actionData?.errors}
+          type="password"
+          autoComplete="current-password"
+          required={true}
+        />
         <button type="submit">Log in</button>
       </Form>
     </div>

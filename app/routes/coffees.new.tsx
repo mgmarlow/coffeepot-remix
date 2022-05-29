@@ -1,7 +1,8 @@
 import { ActionFunction, json, redirect } from '@remix-run/node'
 import { Form, Link, useActionData } from '@remix-run/react'
 import { createCoffee } from '~/coffee.server'
-import FormInput from '~/components/FormInput'
+import FormControl from '~/components/FormControl'
+import Input from '~/components/Input'
 import { requireUserAuth } from '~/user.server'
 
 interface ActionData {
@@ -52,22 +53,21 @@ const NewCoffee = () => {
       <Link to="/coffees">← coffees</Link>
       <h1>Add a new coffee</h1>
       <Form method="post">
-        <FormInput errors={actionData?.errors} name="name" required={true}>
-          Name
-        </FormInput>
-        <FormInput errors={actionData?.errors} name="roaster" required={true}>
-          Roaster
-        </FormInput>
-        <div>
-          <label htmlFor="notes">Notes</label>
-          <br />
+        <Input
+          errors={actionData?.errors}
+          name="name"
+          required={true}
+          label="Name"
+        />
+        <Input
+          errors={actionData?.errors}
+          name="roaster"
+          required={true}
+          label="Roaster"
+        />
+        <FormControl label="Notes" errors={actionData?.errors} name="notes">
           <textarea id="notes" name="notes" aria-describedby="notes-error" />
-          {actionData?.errors?.notes && (
-            <div style={{ color: 'red' }} id="notes-error">
-              {actionData?.errors.notes}
-            </div>
-          )}
-        </div>
+        </FormControl>
         <button type="submit">Add</button>
       </Form>
     </main>

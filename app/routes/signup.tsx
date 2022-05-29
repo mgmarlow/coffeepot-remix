@@ -1,5 +1,6 @@
 import { ActionFunction, json, LoaderFunction, redirect } from '@remix-run/node'
 import { Form, Link, useActionData } from '@remix-run/react'
+import Input from '~/components/Input'
 import { createUserSession, getUserId } from '~/session.server'
 import { createUser, getUserByEmail } from '~/user.server'
 import { validateEmail, validatePassword } from '~/utils'
@@ -53,42 +54,21 @@ const Signup = () => {
       </h1>
 
       <Form method="post">
-        <div>
-          <label htmlFor="email">Email address</label>
-          <br />
-          <input
-            id="email"
-            required
-            name="email"
-            type="email"
-            autoComplete="email"
-            aria-describedby="email-error"
-          />
-          {actionData?.errors?.email && (
-            <div className="pt-1 text-red-700" id="email-error">
-              {actionData.errors.email}
-            </div>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="password">Password</label>
-          <br />
-          <input
-            id="password"
-            required
-            name="password"
-            type="password"
-            autoComplete="none"
-            aria-describedby="password-error"
-          />
-          {actionData?.errors?.password && (
-            <div className="pt-1 text-red-700" id="password-error">
-              {actionData.errors.password}
-            </div>
-          )}
-        </div>
-
+        <Input
+          label="Email address"
+          name="email"
+          required={true}
+          autoComplete="email"
+          type="email"
+        />
+        <Input
+          name="password"
+          label="Password"
+          errors={actionData?.errors}
+          type="password"
+          autoComplete="current-password"
+          required={true}
+        />
         <button type="submit">Sign up</button>
       </Form>
 
