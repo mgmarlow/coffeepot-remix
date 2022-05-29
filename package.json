@@ -3,10 +3,8 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "npm run build:css && remix build",
-    "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
-    "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
-    "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
+    "build": "remix build",
+    "dev": "remix dev",
     "db:seed": "prisma db seed",
     "db:reset": "prisma migrate reset"
   },
@@ -29,12 +27,10 @@
     "@types/react": "^17.0.45",
     "@types/react-dom": "^17.0.17",
     "autoprefixer": "^10.4.7",
-    "concurrently": "^7.2.1",
     "eslint": "^8.15.0",
     "postcss": "^8.4.14",
     "prettier": "^2.6.2",
     "prisma": "^3.14.0",
-    "tailwindcss": "^3.0.24",
     "ts-node": "^10.8.0",
     "typescript": "^4.6.4"
   },

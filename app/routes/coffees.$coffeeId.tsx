@@ -1,7 +1,6 @@
 import { Coffee } from '@prisma/client'
 import { json, LoaderFunction } from '@remix-run/node'
-import { useLoaderData } from '@remix-run/react'
-import { Link } from 'react-router-dom'
+import { useLoaderData, Link } from '@remix-run/react'
 import invariant from 'tiny-invariant'
 import { getCoffee } from '~/coffee.server'
 import { requireUserAuth } from '~/user.server'
