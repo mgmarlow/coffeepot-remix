@@ -22,8 +22,7 @@ npm install
 And create and seed the database:
 
 ```
-npx prisma db push
-npm run db:seed
+npm run db:setup
 ```
 
 Finally, run the app:
