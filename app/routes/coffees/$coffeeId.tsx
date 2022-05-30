@@ -1,9 +1,17 @@
 import { Coffee } from '@prisma/client'
-import { json, LoaderFunction } from '@remix-run/node'
-import { useLoaderData, Link } from '@remix-run/react'
+import { ActionFunction, json, LoaderFunction, redirect } from '@remix-run/node'
+import { Form, useLoaderData } from '@remix-run/react'
 import invariant from 'tiny-invariant'
-import { getCoffee } from '~/coffee.server'
+import { deleteCoffee, getCoffee } from '~/coffee.server'
 import { requireUserAuth } from '~/user.server'
+
+export const action: ActionFunction = async ({ request, params }) => {
+  const userId = await requireUserAuth(request)
+  invariant(params.coffeeId, 'coffeeId not found')
+
+  await deleteCoffee({ userId, id: params.coffeeId })
+  return redirect('/coffees')
+}
 
 interface LoaderData {
   coffee: Coffee
@@ -28,6 +36,9 @@ const CoffeeDetail = () => {
       <h1>{loaderData.coffee.name}</h1>
       <p>by {loaderData.coffee.roaster}</p>
       {loaderData.coffee.notes && <p>{loaderData.coffee.notes}</p>}
+      <Form method="post">
+        <button type="submit">Delete</button>
+      </Form>
     </div>
   )
 }

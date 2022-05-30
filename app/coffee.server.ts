@@ -40,3 +40,13 @@ export const createCoffee = ({
     },
   })
 }
+
+export const deleteCoffee = ({
+  id,
+  userId,
+}: {
+  id: Coffee['id']
+  userId: User['id']
+}) => {
+  return prisma.coffee.deleteMany({ where: { userId, id } })
+}
