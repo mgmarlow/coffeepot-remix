@@ -24,12 +24,11 @@ const CoffeeDetail = () => {
   const loaderData: LoaderData = useLoaderData()
 
   return (
-    <main>
-      <Link to="/coffees">← coffees</Link>
+    <div>
       <h1>{loaderData.coffee.name}</h1>
       <p>by {loaderData.coffee.roaster}</p>
       {loaderData.coffee.notes && <p>{loaderData.coffee.notes}</p>}
-    </main>
+    </div>
   )
 }
 

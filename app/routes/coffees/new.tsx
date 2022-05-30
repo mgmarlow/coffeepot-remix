@@ -1,5 +1,5 @@
 import { ActionFunction, json, redirect } from '@remix-run/node'
-import { Form, Link, useActionData } from '@remix-run/react'
+import { Form, useActionData } from '@remix-run/react'
 import { createCoffee } from '~/coffee.server'
 import FormControl from '~/components/FormControl'
 import Input from '~/components/Input'
@@ -49,8 +49,7 @@ const NewCoffee = () => {
   const actionData = useActionData()
 
   return (
-    <main>
-      <Link to="/coffees">← coffees</Link>
+    <div>
       <h1>Add a new coffee</h1>
       <Form method="post">
         <Input
@@ -70,7 +69,7 @@ const NewCoffee = () => {
         </FormControl>
         <button type="submit">Add</button>
       </Form>
-    </main>
+    </div>
   )
 }
 
