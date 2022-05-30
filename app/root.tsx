@@ -10,12 +10,17 @@ import {
 } from '@remix-run/react'
 import Header from './components/Header'
 import { getUser } from './session.server'
+import styles from './styles/app.css'
 
 export const links = () => {
   return [
     {
       rel: 'stylesheet',
       href: 'https://cdn.simplecss.org/simple.min.css',
+    },
+    {
+      rel: 'stylesheet',
+      href: styles,
     },
   ]
 }

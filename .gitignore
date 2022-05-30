@@ -12,6 +12,3 @@ node_modules
 
 prisma/dev.db
 prisma/dev.db-journal
-
-# tailwind build
-app/styles/app.css

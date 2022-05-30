@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.routeNav {
+}
+
+.routeNav a:not(:last-child) {
+    margin-right: 1rem;
+}
+
+.routeNav a {
+    text-decoration: none;
+}
+
+.routeNav a.active {
+    text-decoration: underline;
+}

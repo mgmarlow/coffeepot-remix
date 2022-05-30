@@ -7,7 +7,7 @@ interface Props {
 const Header = ({ loggedIn = false }: Props) => {
   return (
     <header>
-      <nav>
+      <nav className="header">
         {loggedIn ? (
           <Form action="/logout" method="post">
             <button type="submit">Logout</button>
