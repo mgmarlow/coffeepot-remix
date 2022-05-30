@@ -1,6 +1,6 @@
 import { ActionFunction, json, redirect } from '@remix-run/node'
 import { Form, useActionData } from '@remix-run/react'
-import { createCoffee } from '~/coffee.server'
+import CoffeeRepo from '~/coffee.repo'
 import FormControl from '~/components/FormControl'
 import Input from '~/components/Input'
 import { requireUserAuth } from '~/user.server'
@@ -40,7 +40,7 @@ export const action: ActionFunction = async ({ request }) => {
     )
   }
 
-  const coffee = await createCoffee({ name, roaster, notes, userId })
+  const coffee = await CoffeeRepo.create({ name, roaster, notes, userId })
 
   return redirect(`/coffees/${coffee.id}`)
 }

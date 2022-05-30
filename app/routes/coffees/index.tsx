@@ -1,15 +1,15 @@
 import { json, LoaderFunction } from '@remix-run/node'
-import { Link, Outlet, useLoaderData } from '@remix-run/react'
-import { getCoffees } from '~/coffee.server'
+import { Link, useLoaderData } from '@remix-run/react'
+import CoffeeRepo from '~/coffee.repo'
 import { requireUserAuth } from '~/user.server'
 
 interface LoaderData {
-  coffees: Awaited<ReturnType<typeof getCoffees>>
+  coffees: Awaited<ReturnType<typeof CoffeeRepo.get>>
 }
 
 export const loader: LoaderFunction = async ({ request }) => {
   const userId = await requireUserAuth(request)
-  const coffees = await getCoffees(userId)
+  const coffees = await CoffeeRepo.get(userId)
 
   return json<LoaderData>({ coffees })
 }
