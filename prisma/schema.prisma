@@ -19,6 +19,7 @@ model User {
 
   password Password?
   coffees Coffee[]
+  tastings Tasting[]
 }
 
 model Password {
@@ -32,10 +33,33 @@ model Coffee {
   id String @id @default(cuid())
   name String
   roaster String
-  notes String @default("")
+  notes String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId String
+
+  tastings Tasting[]
+}
+
+model Method {
+  id Int @id @default(autoincrement())
+  name String @unique
+  tastings Tasting[]
+}
+
+model Tasting {
+  id String @id @default(cuid())
+  rating Int
+  notes String?
+
+  method Method @relation(fields: [methodId], references: [id])
+  methodId Int
+
+  coffee Coffee @relation(fields: [coffeeId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  coffeeId String
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId String
