@@ -55,7 +55,7 @@ export const createUser = async (
 }
 
 // TODO: This should probably go somewhere else
-export const requireUserAuth = async (request: Request) => {
+export const requireUserAuth = async (request: Request): Promise<string> => {
   const userId = await getUserId(request)
   if (!userId) {
     throw redirect('/login')
