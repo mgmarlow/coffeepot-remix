@@ -1,6 +1,11 @@
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
 
+const sample = <T>(arr: T[]): T => {
+  const index = Math.floor(Math.random() * arr.length)
+  return arr[index]
+}
+
 const prisma = new PrismaClient()
 
 async function seed() {
@@ -39,8 +44,7 @@ async function seed() {
     },
   })
 
-  // createMany is not supported by SQLite :(
-  const methodNames = [
+  const methods = [
     'Chemex',
     'Aeropress',
     'French Press',
@@ -48,33 +52,30 @@ async function seed() {
     'Moka pot',
   ]
 
-  const methods = await Promise.all(
-    methodNames.map((name) => prisma.method.create({ data: { name } })),
-  )
-
   const tastings = [
     {
       rating: 4,
       notes: 'was good',
-      methodId: methods.find((m) => m.name === 'Aeropress')!.id,
+      method: sample(methods),
       coffeeId: monkeyBite.id,
       userId: user.id,
     },
     {
       rating: 3,
       notes: 'not as good this time',
-      methodId: methods.find((m) => m.name === 'Chemex')!.id,
+      method: sample(methods),
       coffeeId: monkeyBite.id,
       userId: user.id,
     },
     {
       rating: 2,
-      methodId: methods.find((m) => m.name === 'Chemex')!.id,
+      method: sample(methods),
       coffeeId: birdRock.id,
       userId: user.id,
     },
   ]
 
+  // createMany is not supported by SQLite :(
   await Promise.all(
     tastings.map((tasting) => prisma.tasting.create({ data: tasting })),
   )

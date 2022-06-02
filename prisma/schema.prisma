@@ -44,19 +44,11 @@ model Coffee {
   tastings Tasting[]
 }
 
-model Method {
-  id Int @id @default(autoincrement())
-  name String @unique
-  tastings Tasting[]
-}
-
 model Tasting {
   id String @id @default(cuid())
   rating Int
+  method String
   notes String?
-
-  method Method @relation(fields: [methodId], references: [id])
-  methodId Int
 
   coffee Coffee @relation(fields: [coffeeId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   coffeeId String
